@@ -6,7 +6,7 @@ phnPlusBtn.addEventListener('click',function() {
     document.getElementById('phone').value = total;
     const phoneRate = document.getElementById('phoneRate').innerText;
     const phoneCost = parseInt(phoneRate);
-    const phoneAmount = 100 + phoneCost;
+    const phoneAmount = 1219 + phoneCost;
     document.getElementById('phoneRate').innerText = phoneAmount;
 
 })
@@ -19,7 +19,7 @@ phnMinusBtn.addEventListener('click',function() {
         document.getElementById('phone').value = total;   
         const phoneRate = document.getElementById('phoneRate').innerText;
         const phoneCost = parseFloat(phoneRate);
-        const phoneAmount = phoneCost-100;
+        const phoneAmount = phoneCost-1219;
         document.getElementById('phoneRate').innerText = phoneAmount;
     }
     else{
@@ -36,7 +36,7 @@ casPlusBtn.addEventListener('click',function() {
     document.getElementById('casing').value = total;
     const casingRate = document.getElementById('casingRate').innerText;
     const casingCost = parseFloat(casingRate);
-    const casingAmount = 10 + casingCost;
+    const casingAmount = 59 + casingCost;
     document.getElementById('casingRate').innerText = casingAmount;  
     
 
@@ -50,7 +50,7 @@ casMinusBtn.addEventListener('click',function() {
         document.getElementById('casing').value = total;
         const casingRate = document.getElementById('casingRate').innerText;
         const casingCost = parseFloat(casingRate);
-        const casingAmount = casingCost-10;
+        const casingAmount = casingCost-59;
         document.getElementById('casingRate').innerText = casingAmount;
     }
     else{
