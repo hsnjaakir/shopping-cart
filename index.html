@@ -43,9 +43,9 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button onclick="handleCasingCount(false)" id="casMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <button onclick="handleProductCount('casing',false)" id="casMinusBtn" class="btn btn-default"><i class="fas fa-minus"></i></button>
                            <input id="casing" type="text" class="form-control text-center" value="1">
-                           <button onclick="handleCasingCount(true)" id="casPlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button onclick="handleProductCount('casing',true)" id="casPlusBtn" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
                         <h5>$<span id="casingRate">59</span></h5>
@@ -79,27 +79,35 @@
    </section>
    <script>
       document.getElementById('phnPlusBtn').addEventListener('click', function() {
-         handlePhoneCount(true);
+         handleProductCount('phone',true);
          
       })
       document.getElementById('phnMinusBtn').addEventListener('click', function() {
-         handlePhoneCount(false);
+         handleProductCount('phone',false);
       })
 
-      function handlePhoneCount(isIncrease) {
-         const phnInput = document.getElementById('phone').value;
-         const phoneCount = parseInt(phnInput);
-         let phoneNewInput = phoneCount;
+      function handleProductCount(product, isIncrease) {
+         const productInput = document.getElementById(product).value;
+         const productCount = parseInt(productInput);
+         let productNewInput = productCount;
          if (isIncrease == true) {
-           phoneNewInput = phoneCount + 1;
+           productNewInput = productCount + 1;
          }
-         if (isIncrease == false && phoneCount > 0) {
-           phoneNewInput = phoneCount - 1;
+         if (isIncrease == false && productCount > 0) {
+           productNewInput = productCount - 1;
          }
-         document.getElementById('phone').value = phoneNewInput;
-         const phnTotal = phoneNewInput * 1219;
-         document.getElementById('phoneRate').innerText = phnTotal;
+         document.getElementById(product).value = productNewInput;
+         let productTotal = 0;
+         if (product == 'phone') {
+            productTotal = productNewInput * 1219;
+         }
+         if (product == 'casing') {
+            productTotal = productNewInput * 59;
+         }
+         document.getElementById(product + 'Rate').innerText = productTotal;
       }
+
+
       // document.getElementById('phnPlusBtn').addEventListener('click', function() {
       //    const phnInput = document.getElementById('phone').value;
       //    const phoneCount = parseInt(phnInput);
@@ -116,21 +124,24 @@
       //    const phnTotal = phoneNewInput * 1219;
       //    document.getElementById('phoneRate').innerText = phnTotal;
       // })
+
       
-      function handleCasingCount(isIncrease) {
-         const caseInput = document.getElementById('casing');
-         const caseCount = parseInt(caseInput.value);
-         let caseNewCount = caseCount;
-         if (isIncrease == true) {
-            caseNewCount = caseCount + 1;
-         }
-         if (isIncrease == false && caseCount > 0) {
-            caseNewCount = caseCount - 1;
-         }
-         caseInput.value = caseNewCount;
-         const caseTotal = caseNewCount * 59;
-         document.getElementById('casingRate').innerText = caseTotal;
-      }
+      // function handleCasingCount(isIncrease) {
+      //    const caseInput = document.getElementById('casing');
+      //    const caseCount = parseInt(caseInput.value);
+      //    let caseNewCount = caseCount;
+      //    if (isIncrease == true) {
+      //       caseNewCount = caseCount + 1;
+      //    }
+      //    if (isIncrease == false && caseCount > 0) {
+      //       caseNewCount = caseCount - 1;
+      //    }
+      //    caseInput.value = caseNewCount;
+      //    const caseTotal = caseNewCount * 59;
+      //    document.getElementById('casingRate').innerText = caseTotal;
+      // }
+
+
       // document.getElementById('casPlusBtn').addEventListener('click', function () {
       //    const caseInput = document.getElementById('casing');
       //    const caseCount = parseInt(caseInput.value);
@@ -138,8 +149,7 @@
       //    caseInput.value = caseNewCount;
       //    const caseTotal = caseNewCount * 59;
       //    document.getElementById('casingRate').innerText = caseTotal;   
-      //    });
-         
+      //    }); 
       // document.getElementById('casMinusBtn').addEventListener('click', function () {
       //    const caseInput = document.getElementById('casing');
       //    const caseCount = parseInt(caseInput.value);
@@ -147,7 +157,6 @@
       //    caseInput.value = caseNewCount;
       //    const caseTotal = caseNewCount * 59;
       //    document.getElementById('casingRate').innerText = caseTotal;
-            
       //    })
    </script>
    <!-- <script src="shopping-cart.js"></script> -->
